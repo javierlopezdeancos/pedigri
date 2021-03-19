@@ -1,94 +1,98 @@
-export const prefix = 'r2d2'
-
-export const getComponentUuid = (name: string): string => `${prefix}-${name}`
-
-export const getTestId = (componentName: string, componentTestId?: string): string => {
-  let testId = `${prefix}-${componentName}`
-
-  if (componentTestId) {
-    testId += `-${componentTestId}`
-  }
-
-  return testId
-}
-
-export const getId = (componentName: string, componentId?: string): string => {
-  if (componentId) {
-    return `${prefix}-${componentName}-${componentId}`
-  }
-
-  return ''
-}
-
 export type ClassBooleanProperty = {
   state?: boolean
   class?: string
   preventCollisions?: boolean
-}
+};
 
 export type ClassAddProperty = {
   class?: string
   preventCollisions?: boolean
-}
+};
 
 export type ClassConcatProperty = {
-  class?: string
-  complement?: boolean
-}
+  class?: string;
+  preventCollisions?: boolean;
+};
 
 export type ClassProperties = {
   boolean?: Array<ClassBooleanProperty>
   add?: Array<ClassAddProperty>
   concat?: Array<ClassConcatProperty>
-}
+};
 
-export const getClass = ( componentName: string, classProperties?: ClassProperties ): string => {
-  let outClass: string
-  const baseUUIDClass = getComponentUuid(componentName)
+class Pedigree {
+  private _namespace: string;
 
-  outClass = baseUUIDClass
-
-  if (classProperties && classProperties.concat) {
-    classProperties.concat.forEach((concatProperty?: ClassConcatProperty): void => {
-      if (concatProperty?.class && !concatProperty?.complement) {
-        outClass = outClass?.concat('-', concatProperty.class)
-      } else if (concatProperty?.class && concatProperty?.complement) {
-        outClass = outClass?.concat('-', `${baseUUIDClass}-${concatProperty.class}`)
-      }
-    })
+  constructor (namespace = 'pdg') {
+    this._namespace = namespace;
   }
 
-  if (classProperties && classProperties.add) {
-    classProperties.add.forEach((addProperty?: ClassAddProperty): void => {
-      if (addProperty?.class && !addProperty?.preventCollisions) {
-        outClass = outClass?.concat(' ', addProperty.class)
-      } else if (addProperty?.class && addProperty?.preventCollisions) {
-        outClass = outClass?.concat(' ', `${baseUUIDClass}-${addProperty.class}`)
-      }
-    })
+  private getComponentPedigree (componentName: string): string {
+    return `${this._namespace}-${componentName}`
   }
 
-  if (classProperties && classProperties.boolean) {
-    classProperties.boolean.forEach((booleanProperty: ClassBooleanProperty | undefined): void => {
-      if (booleanProperty?.state && booleanProperty?.class && !booleanProperty?.preventCollisions) {
-        outClass = outClass?.concat(' ', booleanProperty.class)
-      } else if (booleanProperty?.state && booleanProperty?.class && booleanProperty?.preventCollisions) {
-        outClass = outClass?.concat(' ', `${baseUUIDClass}-${booleanProperty.class}`)
+  private getComponentPedigreeTree (componentName: string, componentTree?: string): string {
+    if (componentTree) {
+      if (componentTree.includes(`${this._namespace}-`)) {
+        componentTree = componentTree.replace(`${this._namespace}-`, '');
       }
-    });
-  }
 
-  return outClass
-}
-
-export const getGTM = (componentName: string, componentGTM?: string): string => {
-  if (componentGTM) {
-    if (componentGTM.includes(`${prefix}-`)) {
-      componentGTM = componentGTM.replace(`${prefix}-`, '');
+      return `${this._namespace}-${componentTree}-${componentName}`;
     }
 
-    return `${prefix}-${componentGTM}-${componentName}`;
+    return this.getComponentPedigree(componentName);
   }
 
-  return `${prefix}-${componentName}`;
-};
+  public set namespace (namespace: string) {
+    this._namespace = namespace;
+  }
+
+  public getId (componentName: string, componentTree?: string): string {
+    return this.getComponentPedigreeTree(componentName, componentTree);
+  }
+
+  public getTestId (componentName: string, componentTree?: string): string {
+    return this.getComponentPedigreeTree(componentName, componentTree);
+  }
+
+  public getClass ( componentName: string, classProperties?: ClassProperties ): string {
+    let outClass: string;
+    const baseComponentPedigree = this.getComponentPedigree(componentName);
+
+    outClass = baseComponentPedigree;
+
+    if (classProperties && classProperties?.concat) {
+      classProperties.concat.forEach((concatProperty?: ClassConcatProperty): void => {
+        if (concatProperty?.class && (concatProperty?.preventCollisions === undefined || concatProperty?.preventCollisions)) {
+          outClass = outClass?.concat(' ', `${baseComponentPedigree}-${concatProperty.class}`);
+        } else {
+          outClass = outClass?.concat(' ', concatProperty.class);
+        }
+      })
+    }
+
+    if (classProperties && classProperties?.add) {
+      classProperties.add.forEach((addProperty?: ClassAddProperty): void => {
+        if (addProperty?.class && (addProperty?.preventCollisions === undefined || addProperty?.preventCollisions)) {
+          outClass = outClass?.concat(' ', `${baseComponentPedigree}-${addProperty.class}`);
+        } else {
+          outClass = outClass?.concat(' ', addProperty.class);
+        }
+      })
+    }
+
+    if (classProperties && classProperties?.boolean) {
+      classProperties.boolean.forEach((booleanProperty: ClassBooleanProperty | undefined): void => {
+        if (booleanProperty?.class && (booleanProperty?.preventCollisions === undefined || booleanProperty?.preventCollisions)) {
+          outClass = outClass?.concat(' ', `${baseComponentPedigree}-${booleanProperty.class}`);
+        } else {
+          outClass = outClass?.concat(' ', booleanProperty.class);
+        }
+      });
+    }
+
+    return outClass
+  }
+}
+
+export default new Pedigree();

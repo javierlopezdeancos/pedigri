@@ -1,74 +1,142 @@
-import {
-  prefix, getTestId, getId, getClass,
-} from '..';
+import pedigree from '../src';
 
-xdescribe('helpers/components', () => {
+describe('Pedigree', () => {
+  const namespace = 'pdg';
   const testComponentName = 'test';
+  const parentComponentName = 'parent';
+  const parentComponentsTree = `${namespace}-${parentComponentName}`;
+
   describe('getTestId', () => {
-    const defaultTestId = `${prefix}-${testComponentName}`;
-    test('should return the default test id', () => {
-      const testId = getTestId(testComponentName);
-      expect(testId).toBe(`${defaultTestId}`);
+    test('should return the default one and only testId string', () => {
+      const testId = pedigree.getTestId(testComponentName);
+
+      expect(testId).toBe(`${namespace}-${testComponentName}`);
     });
 
-    test('should return the custom test id', () => {
-      const customTestId = 'custom-testId';
-      const testId = getTestId(testComponentName, customTestId);
-      expect(testId).toBe(`${defaultTestId}-${customTestId}`);
+    test('should return the one and only testId string depending on the component tree channel', () => {
+      const testId = pedigree.getTestId(testComponentName, parentComponentsTree);
+
+      expect(testId).toBe(`${parentComponentsTree}-${testComponentName}`);
     });
   });
 
   describe('getId', () => {
-    const defaultId = `${prefix}-${testComponentName}`;
-    test('should return the default id', () => {
-      const id = getId(testComponentName);
-      expect(id).toBe('');
+    test('should return the one and only id string', () => {
+      const id = pedigree.getId(testComponentName);
+
+      expect(id).toBe(`${namespace}-${testComponentName}`);
     });
 
-    test('should return the custom id', () => {
-      const customId = 'custom-id';
-      const id = getId(testComponentName, customId);
-      expect(id).toBe(`${defaultId}-${customId}`);
+    test('the one and only id string depending on the component tree channel', () => {
+      const id = pedigree.getId(testComponentName, parentComponentsTree);
+
+      expect(id).toBe(`${parentComponentsTree}-${testComponentName}`);
     });
   });
 
   describe('getClass', () => {
-    test('should return the default class', () => {
-      const defaultClass = `${prefix}-${testComponentName}`;
-      const classs = getClass(testComponentName);
-      expect(classs).toBe(defaultClass);
+    const class1 = 'class-1';
+    const class2 = 'class-2';
+
+    test('should return the one and only class string', () => {
+      const defaultClass = `${namespace}-${testComponentName}`;
+      const expectedClass = pedigree.getClass(testComponentName);
+
+      expect(expectedClass).toBe(defaultClass);
     });
 
-    test('should return custom class if pass text array', () => {
-      const textPropClass1 = 'text-property-1';
-      const textPropClass2 = 'text-property-2';
-      const customClass = `${prefix}-${testComponentName} ${textPropClass1} ${textPropClass2}`;
-      const classs = getClass(testComponentName, { text: [textPropClass1, textPropClass2] });
-      expect(classs).toBe(customClass);
+    test('should return the one and only class string depending on the component tree channel and boolean classes that we want to add preventing collisions', () => {
+      const customBooleanClass = `${namespace}-${testComponentName} ${namespace}-${testComponentName}-${class1} ${namespace}-${testComponentName}-${class2}`;
+      const expectedClass = pedigree.getClass(
+        testComponentName,
+        {
+          boolean: [{ state: true, class: class1 }, { state: true, class: class2 }]
+        },
+      );
+
+      expect(expectedClass).toBe(customBooleanClass);
     });
 
-    test('should return custom class if pass boolean array', () => {
-      const booleanClass1 = 'text-property-1';
-      const booleanClass2 = 'text-property-2';
-      const customClass = `${prefix}-${testComponentName} ${booleanClass1} ${booleanClass2}`;
-      const classs = getClass(testComponentName, { boolean: [{ state: true, class: booleanClass1 }, { state: true, class: booleanClass2 }] });
-      expect(classs).toBe(customClass);
+    test('should return the one and only class string depending on the component tree channel and boolean classes that we want to add', () => {
+      const customBooleanClass = `${namespace}-${testComponentName} ${class1} ${class2}`;
+      const expectedClass = pedigree.getClass(
+        testComponentName,
+        {
+          boolean: [
+            {
+              state: true,
+              class: class1,
+              preventCollisions: false,
+            },
+            {
+              state: true,
+              class: class2,
+              preventCollisions: false,
+            }]
+        },
+      );
+
+      expect(expectedClass).toBe(customBooleanClass);
     });
 
-    test('should return custom class if pass add array', () => {
-      const addClass1 = 'text-property-1';
-      const addClass2 = 'text-property-2';
-      const customClass = `${prefix}-${testComponentName} ${addClass1} ${addClass2}`;
-      const classs = getClass(testComponentName, { add: [addClass1, addClass2] });
-      expect(classs).toBe(customClass);
+    test('should return the one and only class string depending on the component tree channel and add classes that we want to add preventing collisions', () => {
+      const class3 = 'class-3';
+
+      const customAddClass = `${namespace}-${testComponentName} ${namespace}-${testComponentName}-${class1} ${namespace}-${testComponentName}-${class2} ${namespace}-${testComponentName}-${class3}`;
+
+      const expectedClass = pedigree.getClass(
+        testComponentName,
+        {
+          add: [
+            { class: class1 },
+            { class: class2 },
+            { class: class3 },
+          ],
+        },
+      );
+
+      expect(expectedClass).toBe(customAddClass);
     });
 
-    test('should return custom class if pass concat array', () => {
-      const concatClass1 = 'text-property-1';
-      const concatClass2 = 'text-property-2';
-      const customClass = `${prefix}-${testComponentName}-${concatClass1}-${concatClass2}`;
-      const classs = getClass(testComponentName, { concat: [concatClass1, concatClass2] });
-      expect(classs).toBe(customClass);
+     test('should return the one and only class string depending on the component tree channel and add classes that we want to add', () => {
+      const customAddClass = `${namespace}-${testComponentName} ${namespace}-${testComponentName}-${class1}`;
+
+      const expectedClass = pedigree.getClass(
+        testComponentName,
+        {
+          add: [
+            { class: class1 },
+          ],
+        },
+      );
+
+      expect(expectedClass).toBe(customAddClass);
+    });
+
+    test('should return the one and only class string depending on the component tree channel and concat classes that we want to join preventing collisions', () => {
+      const customConcatClass = `${namespace}-${testComponentName} ${namespace}-${testComponentName}-${class1} ${namespace}-${testComponentName}-${class2}`;
+      const expectedClass = pedigree.getClass(testComponentName, { concat: [{ class: class1 }, { class: class2 }] });
+
+      expect(expectedClass).toBe(customConcatClass);
+    });
+
+    test('should return the one and only class string depending on the component tree channel and concat classes that we want to join', () => {
+      const customConcatClass = `${namespace}-${testComponentName} ${class1}`;
+
+      const expectedClass = pedigree.getClass(
+        testComponentName,
+        {
+          concat: [
+            {
+              class: class1,
+              preventCollisions: false,
+            },
+          ],
+        });
+
+      expect(expectedClass).toBe(customConcatClass);
     });
   });
 });
+
+
