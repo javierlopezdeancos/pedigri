@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/tree-pedigree.svg)](https://badge.fury.io/js/tree-pedigree)
 
-Get the [one and only](https://www.youtube.com/watch?v=ZvMsp7s78Do) unique string to your component depending on their component tree channel
+Get the *[one and only](https://www.youtube.com/watch?v=ZvMsp7s78Do)* unique string to your component depending on their component tree channel
 
 ## Install
 
@@ -55,10 +55,9 @@ console.log(componentTreePedigreeId)
 // 3pdg-component-parent-name-component-child-name
 ```
 
-
 ### Get Test Id
 
-#### Get static one and only Test Id to a component
+#### Get static *one and only* Test Id to a component
 
 ```javascript
 const componentAName = 'component-A-name'
@@ -67,7 +66,7 @@ const componentTreePedigreeTestId = treePedigree.getTestId(componentAName)
 console.log(componentTreePedigreeTestId) // 3pdg-component-A-name
 ```
 
-#### Get static one and only Test Id to a component depending on their tree component channel
+#### Get static *one and only* Test Id to a component depending on their tree component channel
 
 ```javascript
 const componentParentName = 'component-parent-name'
@@ -86,6 +85,12 @@ console.log(componentTreePedigreeTestId)
 
 #### Boolean classes
 
+You can add *one and only* classes depending on some boolean states into a base *one and only* class.
+
 #### Add classes
 
+You can add *one and only* classes into a base *one and only* class.
+
 #### Concat classes
+
+You can add *one and only* classes with a string joined into a base *one and only* base class.
