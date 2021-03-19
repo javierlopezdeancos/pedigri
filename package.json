@@ -1,5 +1,5 @@
 {
-  "name": "pedigree",
+  "name": "tree-pedigree",
   "version": "0.2.0",
   "description": "Get the one and only unique string to your component depending on their component tree chanel",
   "main": "dist/index.js",
@@ -26,14 +26,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/javierlopezdeancos/pedigree.git"
+    "url": "git+https://github.com/javierlopezdeancos/tree-pedigree.git"
   },
   "author": "@javierlopezdeancos",
   "license": "mpl-2.0",
   "bugs": {
-    "url": "https://github.com/javierlopezdeancos/pedigree/issues"
+    "url": "https://github.com/javierlopezdeancos/tree-pedigree/issues"
   },
-  "homepage": "https://github.com/javierlopezdeancos/pedigree#readme",
+  "homepage": "https://github.com/javierlopezdeancos/tree-pedigree#readme",
   "devDependencies": {
     "@types/jest": "^26.0.21",
     "jest": "^26.6.3",
