@@ -1,21 +1,17 @@
 {
   "compilerOptions": {
-    "baseUrl": "src/",
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext", "es2019.array"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": false,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react"
+    "declaration": true,
+    "module": "commonjs",
+    "outDir": "dist",
+    "sourceMap": true,
+    "target": "es6"
   },
-  "exclude": ["**/__mocks__/*"],
-  "include": ["src"]
+  "files": [
+    "src/index.ts"
+  ],
+  "exclude": [
+    "test",
+    "node_modules",
+    "dist"
+  ]
 }
