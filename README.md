@@ -87,6 +87,32 @@ console.log(componentTreePedigreeTestId)
 
 You can add *one and only* classes depending on some boolean states into a base *one and only* class.
 
+```javascript
+const componentAName = 'component-A-name'
+
+const class1 = 'class-1'
+const class2 = 'class-2'
+
+const componentTreePedigreeClass = treePedigree.getClass(
+  componentAName,
+  {
+    boolean: [
+      {
+        state: true,
+        class: class1
+      },
+      {
+        state: true,
+        class: class2
+      }
+    ],
+  },
+)
+
+console.log(componentTreePedigreeClass)
+// 3pdg-component-A-name 3pdg-component-A-name-class-1 3pdg-component-A-name-class-2
+```
+
 #### Add classes
 
 You can add *one and only* classes into a base *one and only* class.
