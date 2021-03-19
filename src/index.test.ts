@@ -8,13 +8,13 @@ describe('Tree Pedigree', () => {
 
   describe('getTestId', () => {
     test('should return the default one and only testId string', () => {
-      const testId = pedigree.getTestId(testComponentName);
+      const testId = treePedigree.getTestId(testComponentName);
 
       expect(testId).toBe(`${namespace}-${testComponentName}`);
     });
 
     test('should return the one and only testId string depending on the component tree channel', () => {
-      const testId = pedigree.getTestId(testComponentName, parentComponentsTree);
+      const testId = treePedigree.getTestId(testComponentName, parentComponentsTree);
 
       expect(testId).toBe(`${parentComponentsTree}-${testComponentName}`);
     });
@@ -22,13 +22,13 @@ describe('Tree Pedigree', () => {
 
   describe('getId', () => {
     test('should return the one and only id string', () => {
-      const id = pedigree.getId(testComponentName);
+      const id = treePedigree.getId(testComponentName);
 
       expect(id).toBe(`${namespace}-${testComponentName}`);
     });
 
     test('the one and only id string depending on the component tree channel', () => {
-      const id = pedigree.getId(testComponentName, parentComponentsTree);
+      const id = treePedigree.getId(testComponentName, parentComponentsTree);
 
       expect(id).toBe(`${parentComponentsTree}-${testComponentName}`);
     });
