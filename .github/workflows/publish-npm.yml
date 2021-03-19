@@ -1,4 +1,4 @@
-name: Pedigree
+name: Publish pedigree in npm on release
 
 on:
   release:
