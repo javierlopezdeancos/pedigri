@@ -1,7 +1,7 @@
 import treePedigree from '../src';
 
 describe('Tree Pedigree', () => {
-  const namespace = 'pdg';
+  const namespace = '3pdg';
   const testComponentName = 'test';
   const parentComponentName = 'parent';
   const parentComponentsTree = `${namespace}-${parentComponentName}`;

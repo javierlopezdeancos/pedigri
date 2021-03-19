@@ -23,7 +23,7 @@ export type ClassProperties = {
 class TreePedigree {
   private _namespace: string;
 
-  constructor (namespace = 'pdg') {
+  constructor (namespace = '3pdg') {
     this._namespace = namespace;
   }
 
