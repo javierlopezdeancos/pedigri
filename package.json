@@ -1,7 +1,7 @@
 {
-  "name": "lowclass",
+  "name": "pedigree",
   "version": "0.2.0",
-  "description": "Helper to build hierarchy strings based in tree nodes in your components",
+  "description": "Get the one and only unique string to your component depending on their component tree chanel",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -26,14 +26,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/javierlopezdeancos/lowClass.git"
+    "url": "git+https://github.com/javierlopezdeancos/pedigree.git"
   },
   "author": "@javierlopezdeancos",
   "license": "mpl-2.0",
   "bugs": {
-    "url": "https://github.com/javierlopezdeancos/lowClass/issues"
+    "url": "https://github.com/javierlopezdeancos/pedigree/issues"
   },
-  "homepage": "https://github.com/javierlopezdeancos/lowClass#readme",
+  "homepage": "https://github.com/javierlopezdeancos/pedigree#readme",
   "devDependencies": {
     "@types/jest": "^26.0.21",
     "jest": "^26.6.3",
