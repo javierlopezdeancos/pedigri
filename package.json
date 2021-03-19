@@ -1,7 +1,7 @@
 {
   "name": "tree-pedigree",
   "version": "0.2.0",
-  "description": "Get the one and only unique string to your component depending on their component tree chanel",
+  "description": "Get the one and only unique string to your component depending on their component tree channel",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
