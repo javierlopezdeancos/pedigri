@@ -20,7 +20,7 @@ export type ClassProperties = {
   concat?: Array<ClassConcatProperty>
 };
 
-class TreePedigree {
+class Pedigri {
   private _namespace: string;
 
   constructor (namespace = '3pdg') {
@@ -95,4 +95,4 @@ class TreePedigree {
   }
 }
 
-export default new TreePedigree();
+export default new Pedigri();

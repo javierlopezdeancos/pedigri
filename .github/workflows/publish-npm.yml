@@ -1,4 +1,4 @@
-name: Publish tree-pedigree in npm on release
+name: Publish pedigri in npm on release
 
 on:
   release:

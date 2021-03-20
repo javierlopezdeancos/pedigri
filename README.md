@@ -1,13 +1,13 @@
-# tree-pedigree :dog: :100:
+# pedigri :dog: :100:
 
-[![npm version](https://badge.fury.io/js/tree-pedigree.svg)](https://badge.fury.io/js/tree-pedigree)
+[![npm version](https://badge.fury.io/js/pedigri.svg)](https://badge.fury.io/js/pedigri)
 
 Get the *[one and only](https://www.youtube.com/watch?v=ZvMsp7s78Do)* unique string to your component depending on their component tree channel
 
 ## Install
 
 ```shell
-npm i --save tree-pedigree
+npm i --save pedigri
 ```
 
 ## Use it
@@ -15,14 +15,14 @@ npm i --save tree-pedigree
 ### Import from your node modules
 
 ```javascript
-import treePedigree from 'tree-pedigree'
+import pedigri from 'pedigri'
 ```
 
 ### Use it with vanilla javascript
 
 ```javascript
 const componentAName = 'component-A-name'
-const componentAId = treePedigree.getId(componentAName)
+const componentAId = pedigri.getId(componentAName)
 
 console.log(componentAId) // 3pdg-component-A-name
 ```
@@ -35,9 +35,9 @@ console.log(componentAId) // 3pdg-component-A-name
 
 ```javascript
 const componentAName = 'component-A-name'
-const componentTreePedigreeId = treePedigree.getId(componentAName)
+const componentPedigriId = pedigri.getId(componentAName)
 
-console.log(componentTreePedigreeId) // 3pdg-component-A-name
+console.log(componentPedigriId) // 3pdg-component-A-name
 ```
 
 #### Get static one and only Id to a component depending on their tree component channel
@@ -46,12 +46,12 @@ console.log(componentTreePedigreeId) // 3pdg-component-A-name
 const componentParentName = 'component-parent-name'
 const componentChildName = 'component-child-name'
 
-const componentTreePedigreeId = treePedigree.getId(
+const componentPedigriId = pedigri.getId(
   componentChildName,
   componentParentName
 )
 
-console.log(componentTreePedigreeId)
+console.log(componentPedigriId)
 // 3pdg-component-parent-name-component-child-name
 ```
 
@@ -61,9 +61,9 @@ console.log(componentTreePedigreeId)
 
 ```javascript
 const componentAName = 'component-A-name'
-const componentTreePedigreeTestId = treePedigree.getTestId(componentAName)
+const componentPedigriTestId = pedigri.getTestId(componentAName)
 
-console.log(componentTreePedigreeTestId) // 3pdg-component-A-name
+console.log(componentPedigriTestId) // 3pdg-component-A-name
 ```
 
 #### Get static *one and only* Test Id to a component depending on their tree component channel
@@ -72,12 +72,12 @@ console.log(componentTreePedigreeTestId) // 3pdg-component-A-name
 const componentParentName = 'component-parent-name'
 const componentChildName = 'component-child-name'
 
-const componentTreePedigreeTestId = treePedigree.getTestId(
+const componentPedigriTestId = pedigri.getTestId(
   componentChildName,
   componentParentName
 )
 
-console.log(componentTreePedigreeTestId)
+console.log(componentPedigriTestId)
 // 3pdg-component-parent-name-component-child-name
 ```
 
@@ -93,7 +93,7 @@ const componentAName = 'component-A-name'
 const class1 = 'class-1'
 const class2 = 'class-2'
 
-const componentTreePedigreeClass = treePedigree.getClass(
+const componentPedigriClass = pedigri.getClass(
   componentAName,
   {
     boolean: [
@@ -109,7 +109,7 @@ const componentTreePedigreeClass = treePedigree.getClass(
   },
 )
 
-console.log(componentTreePedigreeClass)
+console.log(componentPedigriClass)
 // 3pdg-component-A-name 3pdg-component-A-name-class-1 3pdg-component-A-name-class-2
 ```
 
