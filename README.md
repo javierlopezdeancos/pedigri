@@ -123,7 +123,15 @@ const componentAName = 'component-A-name'
 const class1 = 'class-1'
 const class2 = 'class-2'
 
-const componentPedigriClass = pedigri.getClass(componentAName, {add: [{ class: class1 }, { class: class2 }]})
+const componentPedigriClass = pedigri.getClass(
+  componentAName,
+  {
+    add: [
+      { class: class1 },
+      { class: class2 },
+    ],
+  }
+s)
 
 console.log(componentPedigriClass)
 // 3pdg-component-A-name 3pdg-component-A-name-class-1 3pdg-component-A-name-class-2
@@ -139,7 +147,7 @@ const componentAName = 'component-A-name'
 const class1 = 'class-1'
 const class2 = 'class-2'
 
-const componentPedigriClass = pedigri.getClass(componentAName, {add: [{ class: class1 }]})
+const componentPedigriClass = pedigri.getClass(componentAName, { concat: [{ class: class1 }] })
 
 console.log(componentPedigriClass)
 //3pdg-component-A-name-class-1
