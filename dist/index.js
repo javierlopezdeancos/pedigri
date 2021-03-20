@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-class Pedigree {
-    constructor(namespace = 'pdg') {
+class Pedigri {
+    constructor(namespace = '3pdg') {
         this._namespace = namespace;
     }
     getComponentPedigree(componentName) {
@@ -62,5 +62,5 @@ class Pedigree {
         return outClass;
     }
 }
-exports.default = new Pedigree();
+exports.default = new Pedigri();
 //# sourceMappingURL=index.js.map

@@ -16,7 +16,7 @@ export declare type ClassProperties = {
     add?: Array<ClassAddProperty>;
     concat?: Array<ClassConcatProperty>;
 };
-declare class Pedigree {
+declare class Pedigri {
     private _namespace;
     constructor(namespace?: string);
     private getComponentPedigree;
@@ -26,5 +26,5 @@ declare class Pedigree {
     getTestId(componentName: string, componentTree?: string): string;
     getClass(componentName: string, classProperties?: ClassProperties): string;
 }
-declare const _default: Pedigree;
+declare const _default: Pedigri;
 export default _default;
