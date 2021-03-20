@@ -46,7 +46,7 @@ describe('Tree Pedigree', () => {
     });
 
     test('should return the one and only class string depending on the component tree channel and boolean classes that we want to add preventing collisions', () => {
-      const customBooleanClass = `${namespace}-${testComponentName} ${namespace}-${testComponentName}-${class1} ${namespace}-${testComponentName}-${class2}`;
+      const customBooleanClass = `${namespace}-${testComponentName} ${namespace}-${testComponentName}--${class1} ${namespace}-${testComponentName}--${class2}`;
       const expectedClass = pedigri.getClass(
         testComponentName,
         {
@@ -79,7 +79,7 @@ describe('Tree Pedigree', () => {
       expect(expectedClass).toBe(customBooleanClass);
     });
 
-    test('should return the one and only class string depending on the component tree channel and add classes that we want to add preventing collisions', () => {
+    test('should return the one and only class string depending on the component tree channel and classes that we want to add preventing collisions', () => {
       const class3 = 'class-3';
 
       const customAddClass = `${namespace}-${testComponentName} ${namespace}-${testComponentName}-${class1} ${namespace}-${testComponentName}-${class2} ${namespace}-${testComponentName}-${class3}`;
@@ -98,7 +98,7 @@ describe('Tree Pedigree', () => {
       expect(expectedClass).toBe(customAddClass);
     });
 
-     test('should return the one and only class string depending on the component tree channel and add classes that we want to add', () => {
+     test('should return the one and only class string depending on the component tree channel and classes that we want to add', () => {
       const customAddClass = `${namespace}-${testComponentName} ${namespace}-${testComponentName}-${class1}`;
 
       const expectedClass = pedigri.getClass(
@@ -113,26 +113,16 @@ describe('Tree Pedigree', () => {
       expect(expectedClass).toBe(customAddClass);
     });
 
-    test('should return the one and only class string depending on the component tree channel and concat classes that we want to join preventing collisions', () => {
-      const customConcatClass = `${namespace}-${testComponentName} ${namespace}-${testComponentName}-${class1} ${namespace}-${testComponentName}-${class2}`;
-      const expectedClass = pedigri.getClass(testComponentName, { concat: [{ class: class1 }, { class: class2 }] });
+    test('should return the one and only class string depending on the component tree channel and one class that we want to concat', () => {
+      const customConcatClass = `${namespace}-${testComponentName}-${class1}`;
+      const expectedClass = pedigri.getClass(testComponentName, { concat: [{ class: class1 }] });
 
       expect(expectedClass).toBe(customConcatClass);
     });
 
-    test('should return the one and only class string depending on the component tree channel and concat classes that we want to join', () => {
-      const customConcatClass = `${namespace}-${testComponentName} ${class1}`;
-
-      const expectedClass = pedigri.getClass(
-        testComponentName,
-        {
-          concat: [
-            {
-              class: class1,
-              preventCollisions: false,
-            },
-          ],
-        });
+    test('should return the one and only class string depending on the component tree channel and classes that we want to concat', () => {
+      const customConcatClass = `${namespace}-${testComponentName}-${class1} ${namespace}-${testComponentName}-${class2}`;
+      const expectedClass = pedigri.getClass(testComponentName, { concat: [{ class: class1 }, { class: class2 }] });
 
       expect(expectedClass).toBe(customConcatClass);
     });

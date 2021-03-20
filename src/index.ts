@@ -5,13 +5,12 @@ export type ClassBooleanProperty = {
 };
 
 export type ClassAddProperty = {
-  class?: string
-  preventCollisions?: boolean
+  class?: string;
+  preventCollisions?: boolean;
 };
 
 export type ClassConcatProperty = {
   class?: string;
-  preventCollisions?: boolean;
 };
 
 export type ClassProperties = {
@@ -62,11 +61,11 @@ class Pedigri {
     outClass = baseComponentPedigree;
 
     if (classProperties && classProperties?.concat) {
-      classProperties.concat.forEach((concatProperty?: ClassConcatProperty): void => {
-        if (concatProperty?.class && (concatProperty?.preventCollisions === undefined || concatProperty?.preventCollisions)) {
+      classProperties.concat.forEach((concatProperty: ClassConcatProperty, index: number): void => {
+        if (index === 0 &&  concatProperty?.class) {
+          outClass = `${baseComponentPedigree}-${concatProperty.class}`;
+        } else if (index !== 0 && concatProperty?.class) {
           outClass = outClass?.concat(' ', `${baseComponentPedigree}-${concatProperty.class}`);
-        } else {
-          outClass = outClass?.concat(' ', concatProperty.class);
         }
       })
     }
@@ -76,7 +75,7 @@ class Pedigri {
         if (addProperty?.class && (addProperty?.preventCollisions === undefined || addProperty?.preventCollisions)) {
           outClass = outClass?.concat(' ', `${baseComponentPedigree}-${addProperty.class}`);
         } else {
-          outClass = outClass?.concat(' ', addProperty.class);
+          outClass = outClass?.concat('-', addProperty.class);
         }
       })
     }
@@ -84,7 +83,7 @@ class Pedigri {
     if (classProperties && classProperties?.boolean) {
       classProperties.boolean.forEach((booleanProperty: ClassBooleanProperty | undefined): void => {
         if (booleanProperty?.class && (booleanProperty?.preventCollisions === undefined || booleanProperty?.preventCollisions)) {
-          outClass = outClass?.concat(' ', `${baseComponentPedigree}-${booleanProperty.class}`);
+          outClass = outClass?.concat(' ', `${baseComponentPedigree}--${booleanProperty.class}`);
         } else {
           outClass = outClass?.concat(' ', booleanProperty.class);
         }
