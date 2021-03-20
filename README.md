@@ -1,4 +1,4 @@
-# pedigri :dog: :100:
+# Pedigri :dog: :100:
 
 [![npm version](https://badge.fury.io/js/pedigri.svg)](https://badge.fury.io/js/pedigri)
 
