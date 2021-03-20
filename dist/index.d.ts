@@ -9,7 +9,6 @@ export declare type ClassAddProperty = {
 };
 export declare type ClassConcatProperty = {
     class?: string;
-    preventCollisions?: boolean;
 };
 export declare type ClassProperties = {
     boolean?: Array<ClassBooleanProperty>;

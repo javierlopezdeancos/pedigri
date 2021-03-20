@@ -30,12 +30,12 @@ class Pedigri {
         const baseComponentPedigree = this.getComponentPedigree(componentName);
         outClass = baseComponentPedigree;
         if (classProperties && (classProperties === null || classProperties === void 0 ? void 0 : classProperties.concat)) {
-            classProperties.concat.forEach((concatProperty) => {
-                if ((concatProperty === null || concatProperty === void 0 ? void 0 : concatProperty.class) && ((concatProperty === null || concatProperty === void 0 ? void 0 : concatProperty.preventCollisions) === undefined || (concatProperty === null || concatProperty === void 0 ? void 0 : concatProperty.preventCollisions))) {
-                    outClass = outClass === null || outClass === void 0 ? void 0 : outClass.concat(' ', `${baseComponentPedigree}-${concatProperty.class}`);
+            classProperties.concat.forEach((concatProperty, index) => {
+                if (index === 0 && (concatProperty === null || concatProperty === void 0 ? void 0 : concatProperty.class)) {
+                    outClass = `${baseComponentPedigree}-${concatProperty.class}`;
                 }
-                else {
-                    outClass = outClass === null || outClass === void 0 ? void 0 : outClass.concat(' ', concatProperty.class);
+                else if (index !== 0 && (concatProperty === null || concatProperty === void 0 ? void 0 : concatProperty.class)) {
+                    outClass = outClass === null || outClass === void 0 ? void 0 : outClass.concat(' ', `${baseComponentPedigree}-${concatProperty.class}`);
                 }
             });
         }
@@ -45,14 +45,14 @@ class Pedigri {
                     outClass = outClass === null || outClass === void 0 ? void 0 : outClass.concat(' ', `${baseComponentPedigree}-${addProperty.class}`);
                 }
                 else {
-                    outClass = outClass === null || outClass === void 0 ? void 0 : outClass.concat(' ', addProperty.class);
+                    outClass = outClass === null || outClass === void 0 ? void 0 : outClass.concat('-', addProperty.class);
                 }
             });
         }
         if (classProperties && (classProperties === null || classProperties === void 0 ? void 0 : classProperties.boolean)) {
             classProperties.boolean.forEach((booleanProperty) => {
                 if ((booleanProperty === null || booleanProperty === void 0 ? void 0 : booleanProperty.class) && ((booleanProperty === null || booleanProperty === void 0 ? void 0 : booleanProperty.preventCollisions) === undefined || (booleanProperty === null || booleanProperty === void 0 ? void 0 : booleanProperty.preventCollisions))) {
-                    outClass = outClass === null || outClass === void 0 ? void 0 : outClass.concat(' ', `${baseComponentPedigree}-${booleanProperty.class}`);
+                    outClass = outClass === null || outClass === void 0 ? void 0 : outClass.concat(' ', `${baseComponentPedigree}--${booleanProperty.class}`);
                 }
                 else {
                     outClass = outClass === null || outClass === void 0 ? void 0 : outClass.concat(' ', booleanProperty.class);
