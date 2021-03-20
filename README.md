@@ -85,7 +85,7 @@ console.log(componentPedigriTestId)
 
 #### Boolean classes
 
-You can add *one and only* classes depending on some boolean states into a base *one and only* class.
+You can add *one and only* classes depending on some boolean states into a base *one and only* class with double dashes.
 
 ```javascript
 const componentAName = 'component-A-name'
@@ -110,13 +110,37 @@ const componentPedigriClass = pedigri.getClass(
 )
 
 console.log(componentPedigriClass)
-// 3pdg-component-A-name 3pdg-component-A-name-class-1 3pdg-component-A-name-class-2
+// 3pdg-component-A-name 3pdg-component-A-name--class-1 3pdg-component-A-name--class-2
 ```
 
 #### Add classes
 
 You can add *one and only* classes into a base *one and only* class.
 
+```javascript
+const componentAName = 'component-A-name'
+
+const class1 = 'class-1'
+const class2 = 'class-2'
+
+const componentPedigriClass = pedigri.getClass(componentAName, {add: [{ class: class1 }, { class: class2 }]})
+
+console.log(componentPedigriClass)
+// 3pdg-component-A-name 3pdg-component-A-name-class-1 3pdg-component-A-name-class-2
+```
+
 #### Concat classes
 
-You can add *one and only* classes with a string joined into a base *one and only* base class.
+You can concat strings into a base *one and only* base class to build *one and only* classes.
+
+```javascript
+const componentAName = 'component-A-name'
+
+const class1 = 'class-1'
+const class2 = 'class-2'
+
+const componentPedigriClass = pedigri.getClass(componentAName, {add: [{ class: class1 }]})
+
+console.log(componentPedigriClass)
+//3pdg-component-A-name-class-1
+```
