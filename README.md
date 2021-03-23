@@ -1,4 +1,4 @@
-# Pedigri :dog: :100:
+![asset](./assets/images/pedigri.png)
 
 [![npm version](https://badge.fury.io/js/pedigri.svg)](https://badge.fury.io/js/pedigri)
 
@@ -24,7 +24,7 @@ This technique is not extrapolable to the unique identifiers to components becau
 
 ```markdown
 
- ┌────────────────────────────────────────────────┐           
+ ┌────────────────────────────────────────────────┐
  │                                                │     | Component Name | Identifier      |
  │   COMPONENT A                                  │     |----------------|-----------------|
  │                                                │     |  A             | namespace-A     |
@@ -51,7 +51,7 @@ This problem was related by some testing libraries, take a look into [react test
 
 ### The solution
 
-Here is how **Pedigri** could help you. 
+Here is how **Pedigri** could help you.
 
 1. Get unique and semantic identifiers to our components depending on the **component name** and their *family tree* in the component chain.
 
