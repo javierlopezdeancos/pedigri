@@ -22,15 +22,15 @@ This technique is not extrapolable to the unique identifiers to components becau
 
 
 
-```textile
+```markdown
 
- ┌────────────────────────────────────────────────┐
- │                                                │
- │   COMPONENT A                                  │
- │                                                │ 
- │   ┌────────────────────────────────────────┐   │
- │   │                                        │   │
- │   │  COMPONENT B                           │   │
+ ┌────────────────────────────────────────────────┐           
+ │                                                │     | Component Name | Identifier      |
+ │   COMPONENT A                                  │     |----------------|-----------------|
+ │                                                │     |  A             | namespace-A     |
+ │   ┌────────────────────────────────────────┐   │     |  B             | namespace-A-B   |
+ │   │                                        │   │     |  C             | namespace-A-B-C |
+ │   │  COMPONENT B                           │   │     |  D             | namespace-A-B-D |
  │   │  ┌───────────────┐ ┌───────────────┐   │   │
  │   │  │               │ │               │   │   │
  │   │  │ COMPONENT C   │ │ COMPONENT D   │   │   │
