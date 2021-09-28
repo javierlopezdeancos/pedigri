@@ -73,9 +73,9 @@ class Pedigri {
     if (classProperties && classProperties?.add) {
       classProperties.add.forEach((addProperty?: ClassAddProperty): void => {
         if (addProperty?.class && (addProperty?.preventCollisions === undefined || addProperty?.preventCollisions)) {
-          outClass = outClass?.concat(' ', `${baseComponentPedigree}-${addProperty.class}`);
+          outClass = outClass?.concat(' ', `${baseComponentPedigree}-${addProperty?.class}`);
         } else {
-          outClass = outClass?.concat('-', addProperty.class);
+          outClass = outClass?.concat('-', addProperty?.class || '');
         }
       })
     }
@@ -85,7 +85,7 @@ class Pedigri {
         if (booleanProperty?.class && (booleanProperty?.preventCollisions === undefined || booleanProperty?.preventCollisions)) {
           outClass = outClass?.concat(' ', `${baseComponentPedigree}--${booleanProperty.class}`);
         } else {
-          outClass = outClass?.concat(' ', booleanProperty.class);
+          outClass = outClass?.concat(' ', booleanProperty?.class || '');
         }
       });
     }

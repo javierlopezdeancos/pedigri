@@ -1,11 +1,12 @@
 {
   "name": "pedigri",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Get the one and only unique string to your component depending on their component tree channel",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/esm/index.d.ts",
   "files": [
-    "/dist"
+    "/lib"
   ],
   "type": "module",
   "jest": {
@@ -20,7 +21,9 @@
     ]
   },
   "scripts": {
-    "build": "npx tsc",
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir lib/cjs",
     "test": "jest",
     "test:watch": "jest --watch"
   },
